@@ -1,4 +1,4 @@
-package com.example.aplicativo;
+package com.example.appdesergio;
 
 import org.junit.Test;
 

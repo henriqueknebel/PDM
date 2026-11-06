@@ -42,13 +42,14 @@ public class MainActivity extends AppCompatActivity {
             ContentValues cv = new ContentValues();
             cv.put("titulo", titulo);
 
-            int status = (int) db.insert("notinhas", null, cv); //cast "(int)" - mudança explicita de tipo de variavel
+            int status = (int) db.insert("notas", null, cv); //cast "(int)" - mudança explicita de tipo de variavel
 
             String msgStatus;
             if (status > 0) {
                         msgStatus="Nota salva com sucesso! "+status;
                         editText.setText("");
                         editText.requestFocus();
+                        listarNotas();
 
             } else {
                         msgStatus="Erro ao inserir a nota! "+status;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> notas = new ArrayList<>();
         while(!cursor.isAfterLast()){
             String s = cursor.getString((int)cursor.getColumnIndex("titulo")); //cast "(int)" - mudança explicita de tipo de variavel
+            notas.add(s);
             cursor.moveToNext();
         }
 
